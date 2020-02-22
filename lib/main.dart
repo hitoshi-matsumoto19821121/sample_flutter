@@ -1,7 +1,8 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'header.dart';
+import 'footer.dart'; 
 import 'package:http/http.dart' as http;
-
 
 void main() => runApp(MyApp());
 
@@ -10,19 +11,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Issues2',
-      theme: ThemeData(
-
-        primarySwatch: Colors.blue,
-      ),
-      home: MyHomePage(title: 'Flutter Issues2'),
+      home: MyHomePage(),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
-  final String title;
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
@@ -66,9 +60,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
+      appBar: Header(),
       body: ListView.builder(
         itemBuilder: (BuildContext context, int index) {
           if(index >= _issues.length) {
@@ -84,6 +76,7 @@ class _MyHomePageState extends State<MyHomePage> {
           );
         },
       ),
+      bottomNavigationBar: Footer()
     );
   }
 }
